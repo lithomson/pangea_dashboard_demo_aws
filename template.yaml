@@ -6,7 +6,7 @@ Resources:
   Dash:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: dash_app/app.lambda_handler
+      Handler: dash_app/index.lambda_handler
       Runtime: python3.8
       Timeout: 300
       Events:
