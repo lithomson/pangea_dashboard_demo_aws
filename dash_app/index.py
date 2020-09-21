@@ -7,8 +7,8 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 sys.path.append('..')
-from dash_app.pages import about, sampling_numbers, sampling_period
-from dash_app.app import app
+from dash_app.pages import about, sampling_numbers, sampling_period  # noqa: E402
+from dash_app.app import app  # noqa: E402
 
 # the style arguments for the sidebar. We use position:fixed and a fixed width
 SIDEBAR_STYLE = {
