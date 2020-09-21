@@ -16,11 +16,6 @@ df = pd.read_csv(CSV)
 COHORT_CATEGORIES = df['main_cohort_id'].unique()
 SEX_CATEGORIES = df['sex'].unique()
 
-LOGO = join(dirname(abspath(__file__)), 'assets', 'pangea-hiv-logo.png')
-LOGO_STYLE = {
-    'height': '75%', 'width': '75%'
-}
-
 # the style arguments for the sidebar. We use position:fixed and a fixed width
 SIDEBAR_STYLE = {
     "position": "fixed",
@@ -51,7 +46,6 @@ app = dash.Dash(__name__, compress=False, requests_pathname_prefix='/Prod/',
 
 sidebar = html.Div(
     [
-        html.Div([html.Img(src=app.get_asset_url(LOGO), style=LOGO_STYLE)]),
         html.H2("Dashboard Demo", className="display-5"),
         html.Hr(),
         html.P("Navigation", className="lead"),
@@ -71,8 +65,6 @@ sidebar = html.Div(
 )
 
 content = html.Div(id="page-content", style=CONTENT_STYLE)
-
-logo = html.Div([html.Img(src=app.get_asset_url('pangea-hiv-logo.png'), style={'height': '10%', 'width': '10%'})])
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -143,11 +135,6 @@ def update_sampling_numbers_graph(mcohort_checkbox, sex_checkbox):
     return fig
 
 
-data_distributions_layout = html.Div([
-    html.H5('Data Distributions'),
-    html.Div(id='data-distributions-content'),
-])
-
 df_sampling_period = df.copy()
 df_sampling_period = df_sampling_period[['geo_country', 'visit_dt']]
 df_sampling_period['visit_dt'] = df_sampling_period['visit_dt'].apply(lambda x: datetime.strptime(x, '%Y-%m-%d').date())
@@ -179,13 +166,11 @@ sampling_period_layout = html.Div(children=[
     [Input(component_id='url', component_property='pathname')]
 )
 def display_page(pathname):
-    pathname = pathname.replace('/Prod/dash_app', '/')
+    pathname = [pathname.replace('/Prod/dash_app', '/') if pathname else pathname]
     if pathname == '/':
         return index_page
     elif pathname == "/sampling-numbers":
         return sampling_numbers_layout
-    elif pathname == "/data-distributions":
-        return data_distributions_layout
     elif pathname == "/sampling-period":
         return sampling_period_layout
     elif pathname == "/about":
