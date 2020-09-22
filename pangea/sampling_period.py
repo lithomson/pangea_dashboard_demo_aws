@@ -6,7 +6,7 @@ import dash_html_components as html
 import pandas as pd
 import plotly.express as px
 
-CSV = join(dirname(dirname(abspath(__file__))), 'assets', 'pangea_dashboard_demo.csv')
+CSV = join(dirname(abspath(__file__)), 'assets', 'pangea_dashboard_demo.csv')
 
 df = pd.read_csv(CSV)
 df = df[['geo_country', 'visit_dt']]

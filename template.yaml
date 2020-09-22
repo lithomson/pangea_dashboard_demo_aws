@@ -6,7 +6,7 @@ Resources:
   Dash:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: dash_app/index.lambda_handler
+      Handler: index.lambda_handler
       Runtime: python3.8
       Timeout: 300
       Events:
@@ -22,4 +22,4 @@ Resources:
             Method: ANY
 Outputs:
   DashAppURL:
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/dash_app'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod'

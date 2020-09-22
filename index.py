@@ -6,9 +6,9 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-sys.path.append('..')
-from dash_app.pages import about, sampling_numbers, sampling_period  # noqa: E402
-from dash_app.app import app  # noqa: E402
+sys.path.append('.')
+from pangea import about, sampling_numbers, sampling_period  # noqa: E402
+from app import app  # noqa: E402
 
 # the style arguments for the sidebar. We use position:fixed and a fixed width
 SIDEBAR_STYLE = {
@@ -74,7 +74,7 @@ index_layout = html.Div([
     [Input(component_id='url', component_property='pathname')]
 )
 def display_page(pathname):
-    pathname = pathname.replace('/Prod/dash_app', '/') if pathname else pathname
+    pathname = pathname.replace('/Prod', '/') if pathname else pathname
     if pathname == '/':
         return index_layout
     elif pathname == "/sampling-numbers":

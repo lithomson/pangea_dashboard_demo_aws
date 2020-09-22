@@ -8,10 +8,10 @@ import pandas as pd
 import plotly.express as px
 from dash.dependencies import Input, Output
 
-sys.path.append('../..')
-from dash_app.app import app  # noqa: E402
+sys.path.append('..')
+from app import app  # noqa: E402
 
-CSV = join(dirname(dirname(abspath(__file__))), 'assets', 'pangea_dashboard_demo.csv')
+CSV = join(dirname(abspath(__file__)), 'assets', 'pangea_dashboard_demo.csv')
 
 df = pd.read_csv(CSV)
 df = df[['geo_country', 'sex', 'main_cohort_id']]
