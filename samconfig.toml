@@ -2,9 +2,9 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "pangea-dash-demo-dev"
+stack_name = "pangea-dash-demo"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-ablslhm7fje1"
-s3_prefix = "pangea-dash-demo-dev"
+s3_prefix = "pangea-dash-demo"
 region = "eu-west-2"
 capabilities = "CAPABILITY_IAM"
 
